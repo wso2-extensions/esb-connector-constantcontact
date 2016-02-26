@@ -53,25 +53,20 @@
         <property name="uri.var.queryParams" value=""/>
         <script language="js">
             <![CDATA[
-				
 				payload = new Object();
-				
 				// Setting mandatory parameters.
 				var emailAddresses = mc.getProperty('uri.var.emailAddresses');
 				var lists = mc.getProperty('uri.var.lists');
-				
 				if (emailAddresses != null && emailAddresses != "") {
 	            	payload.email_addresses = eval("("+emailAddresses+")");
 	            } else {
 	            	payload.email_addresses = "";
 	            }
-	            
 	            if (lists != null && lists != "") {
 	            	payload.lists = eval("("+lists+")");
 	            } else {
 	            	payload.lists = "";
 	            }
-				
 				// Setting optional parameters.			
 				var actionBy = mc.getProperty('uri.var.actionBy');
 				var addresses = mc.getProperty('uri.var.addresses');
@@ -93,61 +88,46 @@
 	            	queryParams = '&action_by=' + actionBy;
 	            	mc.setProperty('uri.var.queryParams', queryParams);
 	            }
-	            
 	            if (addresses != null && addresses != "") {
 	            	payload.addresses = eval("("+addresses+")");
 	            }
-	            
 	            if (cellPhone != null && cellPhone != "") {
 	            	payload.cell_phone = cellPhone;
 	            }
-	            
 	            if (companyName != null && companyName != "") {
 	            	payload.company_name = companyName;
 	            }
-	            
 	            if (customFields != null && customFields != "") {
 	            	payload.custom_fields = eval("("+customFields+")");
 	            }
-	            
 	            if (fax != null && fax != "") {
 	            	payload.fax = fax;
 	            }
-	            
 	            if (firstName != null && firstName != "") {
 	            	payload.first_name = firstName;
 	            }
-	            
 	            if (middleName != null && middleName != "") {
 	            	payload.middle_name = middleName;
 	            }
-	            
 	            if (lastName != null && lastName != "") {
 	            	payload.last_name = lastName;
 	            }
-	            
 	            if (homePhone != null && homePhone != "") {
 	            	payload.home_phone = homePhone;
 	            }
-	            
 	            if (jobTitle != null && jobTitle != "") {
 	            	payload.job_title = jobTitle;
 	            }
-	            
 	            if (notes != null && notes != "") {
 	            	payload.notes = eval("("+notes+")");
 	            }
-	            
 	            if (prefixName != null && prefixName != "") {
 	            	payload.prefix_name = prefixName;
 	            }
-	            
 	            if (workPhone != null && workPhone != "") {
 	            	payload.work_phone = workPhone;
 	            }
-	            
-				mc.setPayloadJSON(payload);		
-						
+				mc.setPayloadJSON(payload);
 			]]>
         </script>
         <call>
