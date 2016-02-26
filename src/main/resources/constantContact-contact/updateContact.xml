@@ -76,9 +76,7 @@
         </payloadFactory>
         <script language="js">
             <![CDATA[
-				
 				payload = mc.getPayloadJSON();
-				
 				// Setting mandatory parameters.
 				var emailAddresses = mc.getProperty('uri.var.emailAddresses');
 				var lists = mc.getProperty('uri.var.lists');
@@ -88,7 +86,6 @@
 	            } else {
 	            	payload.email_addresses = "";
 	            }
-	            
 	            if (lists != null && lists != "") {
 	            	payload.lists = eval("("+lists+")");
 	            } else {
@@ -110,37 +107,28 @@
 	            	queryParams = '&action_by=' + actionBy;
 	            	mc.setProperty('uri.var.queryParams', queryParams);
 	            }
-	            
 	            if (addresses != null && addresses != "") {
 	            	payload.addresses = eval("("+addresses+")");
 	            }
-	            
 	            if (cellPhone != null && cellPhone != "") {
 	            	payload.cell_phone = cellPhone;
 	            }
-	            
 	            if (customFields != null && customFields != "") {
 	            	payload.custom_fields = eval("("+customFields+")");
 	            }
-	            
 	            if (fax != null && fax != "") {
 	            	payload.fax = fax;
 	            }
-	            
 	            if (homePhone != null && homePhone != "") {
 	            	payload.home_phone = homePhone;
 	            }
-	            
 	            if (notes != null && notes != "") {
 	            	payload.notes = eval("("+notes+")");
 	            }
-	            
 	            if (workPhone != null && workPhone != "") {
 	            	payload.work_phone = workPhone;
 	            }
-	            
-				mc.setPayloadJSON(payload);		
-						
+				mc.setPayloadJSON(payload);
 			]]>
         </script>
         <call>

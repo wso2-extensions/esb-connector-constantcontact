@@ -47,7 +47,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         esbRequestHeadersMap.put("Accept-Charset", "UTF-8");
         esbRequestHeadersMap.put("Content-Type", "application/json");
-
         apiRequestHeadersMap.putAll(esbRequestHeadersMap);
         apiRequestHeadersMap.put("Authorization", "Bearer " + connectorProperties.getProperty("apiToken"));
 
@@ -146,7 +145,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getString("name"), apiRestResponse.getBody().getString("name"));
         Assert.assertEquals(esbRestResponse.getBody().getString("status"), apiRestResponse.getBody()
                 .getString("status"));
@@ -171,7 +169,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -194,7 +191,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getString("created_date"),
                 apiRestResponse.getBody().getString("created_date"));
         Assert.assertEquals(esbRestResponse.getBody().getString("status"), apiRestResponse.getBody()
@@ -219,7 +215,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getString("created_date"),
                 apiRestResponse.getBody().getString("created_date"));
         Assert.assertEquals(esbRestResponse.getBody().getString("status"), apiRestResponse.getBody()
@@ -246,7 +241,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 409);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 409);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -269,7 +263,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getString("created_date"),
                 apiRestResponse.getBody().getString("created_date"));
         Assert.assertEquals(esbRestResponse.getBody().getString("status"), apiRestResponse.getBody()
@@ -295,7 +288,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -318,7 +310,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getString("created_date"),
                 apiRestResponse.getBody().getString("created_date"));
         Assert.assertEquals(esbRestResponse.getBody().getString("status"), apiRestResponse.getBody()
@@ -344,7 +335,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -368,7 +358,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("name"), apiJsonArrayResponse
                 .getJSONObject(0).getString("name"));
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("created_date"), apiJsonArrayResponse
@@ -396,7 +385,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("name"), apiJsonArrayResponse
                 .getJSONObject(0).getString("name"));
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("created_date"), apiJsonArrayResponse
@@ -422,7 +410,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -445,7 +432,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("id"),
                 apiRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("id"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("first_name"),
@@ -475,7 +461,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("id"),
                 apiRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("id"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("first_name"),
@@ -501,7 +486,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -526,7 +510,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getString("id"),
                 apiJsonArrayResponse.getJSONObject(0).getString("id"));
         Assert.assertEquals(esbRestResponse.getBody().getString("scheduled_date"), apiJsonArrayResponse
@@ -555,7 +538,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -581,7 +563,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("id"), apiJsonArrayResponse
                 .getJSONObject(0).getString("id"));
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("scheduled_date"), apiJsonArrayResponse
@@ -607,7 +588,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -624,14 +604,12 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listCampaignClicks_mandatory.json");
 
         String campaignId = connectorProperties.getProperty("trackCampaignId");
-
         String apiEndPoint = apiRequestUrl + "/emailmarketing/campaigns/" + campaignId + "/tracking/clicks" + apiKey;
 
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("link_id"),
                 apiRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("link_id"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("click_date"),
@@ -661,7 +639,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("link_id"),
                 apiRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("link_id"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("click_date"),
@@ -693,7 +670,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -717,7 +693,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("contact_id"),
                 apiRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("contact_id"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("open_date"),
@@ -747,7 +722,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("contact_id"),
                 apiRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("contact_id"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("results").getJSONObject(0).getString("open_date"),
@@ -779,7 +753,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -806,7 +779,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("email_address"), apiJsonArrayResponse
                 .getJSONObject(0).getString("email_address"));
     }
@@ -830,7 +802,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
         Assert.assertEquals(esbRestResponse.getBody().getString("first_name"),
                 apiRestResponse.getBody().getString("first_name"));
     }
@@ -858,7 +829,6 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
         Assert.assertEquals(esbJsonArrayResponse.getJSONObject(0).getString("error_message"), apiJsonArrayResponse
                 .getJSONObject(0).getString("error_message"));
     }
@@ -947,5 +917,4 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
         Assert.assertEquals(esbResultArray.getJSONObject(1).getString("id"), apiResultArray.getJSONObject(1).getString("id"));
         Assert.assertEquals(esbResultArray.getJSONObject(1).getString("modified_date"), apiResultArray.getJSONObject(1).getString("modified_date"));
     }
-
 }
