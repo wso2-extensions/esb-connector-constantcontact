@@ -134,7 +134,8 @@
         </dependency>
     </dependencies>
     <scm>
-        <connection>scm:git:https://github.com/wso2-extensions/esb-connector-constantcontact.git
+        <connection>
+            scm:git:https://github.com/wso2-extensions/esb-connector-constantcontact.git
         </connection>
         <url>https://github.com/wso2-extensions/esb-connector-constantcontact.git</url>
         <developerConnection>
