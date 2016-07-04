@@ -61,8 +61,7 @@
         <property name="uri.var.greetingName" expression="$func:greetingName"/>
         <property name="uri.var.greetingSalutations" expression="$func:greetingSalutations"/>
         <property name="uri.var.greetingString" expression="$func:greetingString"/>
-        <property name="uri.var.isPermissionReminderEnabled"
-                  expression="$func:isPermissionReminderEnabled"/>
+        <property name="uri.var.isPermissionReminderEnabled" expression="$func:isPermissionReminderEnabled"/>
         <property name="uri.var.isViewAsWebpageEnabled" expression="$func:isViewAsWebpageEnabled"/>
         <property name="uri.var.messageFooter" expression="$func:messageFooter"/>
         <property name="uri.var.permissionReminderText" expression="$func:permissionReminderText"/>
@@ -113,7 +112,7 @@
 				var viewAsWebPageText = mc.getProperty('uri.var.viewAsWebPageText');
 					
 	            if (sentToContactLists != null && sentToContactLists != "") {
-	            	payload.sent_to_contact_lists = eval("("+sentToContactLists+")");
+	            	payload.sent_to_contact_lists = eval("(" + sentToContactLists + ")");
 	            }
 	            if (emailContentFormat != null && emailContentFormat != "") {
 	            	payload.email_content_format = emailContentFormat;
@@ -128,13 +127,13 @@
 	            	payload.greeting_string = greetingString;
 	            }
 	            if (isPermissionReminderEnabled != null && isPermissionReminderEnabled != "") {
-	            	payload.is_permission_reminder_enabled = eval("("+isPermissionReminderEnabled+")");
+	            	payload.is_permission_reminder_enabled = eval("(" + isPermissionReminderEnabled + ")");
 	            }
 	            if (isViewAsWebpageEnabled != null && isViewAsWebpageEnabled != "") {
-	            	payload.is_view_as_webpage_enabled = eval("("+isViewAsWebpageEnabled+")");
+	            	payload.is_view_as_webpage_enabled = eval("(" + isViewAsWebpageEnabled + ")");
 	            }
 	            if (messageFooter != null && messageFooter != "") {
-	            	payload.message_footer = eval("("+messageFooter+")");
+	            	payload.message_footer = eval("(" + messageFooter + ")");
 	            }
 	            if (permissionReminderText != null && permissionReminderText != "") {
 	            	payload.permission_reminder_text = permissionReminderText;

@@ -10,7 +10,7 @@
   "subject": "%s(subject)",
   "textContent": "This is a sample text",
   "messageFooter": {
-    "organization_name": "Virtusa",
+    "organization_name": "testOrg",
     "address_line_1": "Danister De Silva Mawatha",
     "address_line_2": "Colombo 3",
     "city": "Colombo",

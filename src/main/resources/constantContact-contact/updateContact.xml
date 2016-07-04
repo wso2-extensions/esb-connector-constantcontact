@@ -82,12 +82,12 @@
 				var lists = mc.getProperty('uri.var.lists');
 				
 				if (emailAddresses != null && emailAddresses != "") {
-	            	payload.email_addresses = eval("("+emailAddresses+")");
+	            	payload.email_addresses = eval("(" + emailAddresses + ")");
 	            } else {
 	            	payload.email_addresses = "";
 	            }
 	            if (lists != null && lists != "") {
-	            	payload.lists = eval("("+lists+")");
+	            	payload.lists = eval("(" + lists + ")");
 	            } else {
 	            	payload.lists = "";
 	            }
@@ -108,13 +108,13 @@
 	            	mc.setProperty('uri.var.queryParams', queryParams);
 	            }
 	            if (addresses != null && addresses != "") {
-	            	payload.addresses = eval("("+addresses+")");
+	            	payload.addresses = eval("(" + addresses + ")");
 	            }
 	            if (cellPhone != null && cellPhone != "") {
 	            	payload.cell_phone = cellPhone;
 	            }
 	            if (customFields != null && customFields != "") {
-	            	payload.custom_fields = eval("("+customFields+")");
+	            	payload.custom_fields = eval("(" + customFields + ")");
 	            }
 	            if (fax != null && fax != "") {
 	            	payload.fax = fax;
@@ -123,7 +123,7 @@
 	            	payload.home_phone = homePhone;
 	            }
 	            if (notes != null && notes != "") {
-	            	payload.notes = eval("("+notes+")");
+	            	payload.notes = eval("(" + notes + ")");
 	            }
 	            if (workPhone != null && workPhone != "") {
 	            	payload.work_phone = workPhone;

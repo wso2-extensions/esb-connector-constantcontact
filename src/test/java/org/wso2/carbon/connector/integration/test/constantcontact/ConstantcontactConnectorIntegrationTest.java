@@ -54,20 +54,21 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
         apiKey = "?api_key=" + connectorProperties.getProperty("apiKey");
         connectorProperties.setProperty("campaignName", System.currentTimeMillis() + connectorProperties
                 .getProperty("campaignName"));
-        connectorProperties.setProperty("campaignNameOptional", System.currentTimeMillis() + connectorProperties
-                .getProperty("campaignNameOptional"));
-        connectorProperties.setProperty("contactEmailAddresses", System.currentTimeMillis() + connectorProperties
-                .getProperty("contactEmailAddresses"));
-        connectorProperties.setProperty("contactEmailAddressesOptional", System.currentTimeMillis() + connectorProperties
-                .getProperty("contactEmailAddressesOptional"));
-        connectorProperties.setProperty("contactEmailAddressesUpdate", System.currentTimeMillis() + connectorProperties
-                .getProperty("contactEmailAddressesUpdate"));
+        connectorProperties.setProperty("campaignNameOptional", System.currentTimeMillis()
+                + connectorProperties.getProperty("campaignNameOptional"));
+        connectorProperties.setProperty("contactEmailAddresses", System.currentTimeMillis()
+                + connectorProperties.getProperty("contactEmailAddresses"));
+        connectorProperties.setProperty("contactEmailAddressesOptional", System.currentTimeMillis()
+                + connectorProperties.getProperty("contactEmailAddressesOptional"));
+        connectorProperties.setProperty("contactEmailAddressesUpdate", System.currentTimeMillis()
+                + connectorProperties.getProperty("contactEmailAddressesUpdate"));
     }
 
     /**
      * Positive test case for createCampaign method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "Constantcontact {createCampaign} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"},
+            description = "Constantcontact {createCampaign} integration test with mandatory parameters.")
     public void testCreateCampaignWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:createCampaign");
@@ -82,13 +83,15 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
         Assert.assertEquals(apiRestResponse.getBody().getString("subject"), connectorProperties.getProperty("subject"));
-        Assert.assertEquals(apiRestResponse.getBody().getString("name"), connectorProperties.getProperty("campaignName"));
+        Assert.assertEquals(apiRestResponse.getBody().getString("name"),
+                connectorProperties.getProperty("campaignName"));
     }
 
     /**
      * Positive test case for createCampaign method with optional parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "Constantcontact {createCampaign} integration test with optional parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactListWithMandatoryParameters"},
+            description = "Constantcontact {createCampaign} integration test with optional parameters.")
     public void testCreateCampaignWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 
         esbRequestHeadersMap.put("Action", "urn:createCampaign");
@@ -102,8 +105,10 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
         Assert.assertEquals(apiRestResponse.getBody().getString("subject"), connectorProperties.getProperty("subject"));
-        Assert.assertEquals(apiRestResponse.getBody().getString("name"), connectorProperties.getProperty("campaignNameOptional"));
-        Assert.assertEquals(apiRestResponse.getBody().getString("greeting_string"), connectorProperties.getProperty("subject"));
+        Assert.assertEquals(apiRestResponse.getBody().getString("name"),
+                connectorProperties.getProperty("campaignNameOptional"));
+        Assert.assertEquals(apiRestResponse.getBody().getString("greeting_string"),
+                connectorProperties.getProperty("subject"));
     }
 
     /**
@@ -118,19 +123,22 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_createCampaign_negative.json");
 
         String apiEndPoint = apiRequestUrl + "/emailmarketing/campaigns/" + apiKey;
-        RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "POST", apiRequestHeadersMap, "api_createCampaign_negative.json");
+        RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "POST", apiRequestHeadersMap,
+                "api_createCampaign_negative.json");
         JSONArray esbArray = new JSONArray(esbRestResponse.getBody().getString("output"));
         JSONArray apiArray = new JSONArray(apiRestResponse.getBody().getString("output"));
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-        Assert.assertEquals(esbArray.getJSONObject(0).getString("error_message"), apiArray.getJSONObject(0).getString("error_message"));
+        Assert.assertEquals(esbArray.getJSONObject(0).getString("error_message"),
+                apiArray.getJSONObject(0).getString("error_message"));
     }
 
     /**
      * Positive test case for createContactList method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {createContactList} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {createContactList} integration test with mandatory parameters.")
     public void testCreateContactListWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:createContactList");
@@ -153,7 +161,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for createContactList method.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {createContactList} integration test with negative case.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {createContactList} integration test with negative case.")
     public void testCreateContactListWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:createContactList");
@@ -176,7 +185,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for createContact method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactListWithMandatoryParameters"}, description = "ConstantContact {createContact} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactListWithMandatoryParameters"},
+            description = "ConstantContact {createContact} integration test with mandatory parameters.")
     public void testCreateContactWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:createContact");
@@ -200,7 +210,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for createContact method with optional parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {createContact} integration test with Optional parameters.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {createContact} integration test with Optional parameters.")
     public void testCreateContactWithOPtionalParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:createContact");
@@ -224,7 +235,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for createContact method.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactWithMandatoryParameters"}, description = "ConstantContact {createContact} integration test with negative case.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactWithMandatoryParameters"},
+            description = "ConstantContact {createContact} integration test with negative case.")
     public void testCreateContactWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:createContact");
@@ -248,7 +260,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for getContactById method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactWithOPtionalParameters"}, description = "ConstantContact {getContactById} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactWithOPtionalParameters"},
+            description = "ConstantContact {getContactById} integration test with mandatory parameters.")
     public void testGetContactByIdWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getContactById");
@@ -295,7 +308,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for getContactListById method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactListWithMandatoryParameters"}, description = "ConstantContact {getContactById} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactListWithMandatoryParameters"},
+            description = "ConstantContact {getContactById} integration test with mandatory parameters.")
     public void testGetContactListByIdWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getContactListById");
@@ -319,7 +333,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for getContactListById method.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {getContactListById} integration test with negative case.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {getContactListById} integration test with negative case.")
     public void testGetContactListByIdWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getContactListById");
@@ -342,7 +357,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for listContactLists method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactListWithMandatoryParameters"}, description = "ConstantContact {listContactLists} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactListWithMandatoryParameters"},
+            description = "ConstantContact {listContactLists} integration test with mandatory parameters.")
     public void testListContactListsWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listContactLists");
@@ -367,7 +383,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for listContactLists method with optional parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listContactLists} integration test with optional parameters.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {listContactLists} integration test with optional parameters.")
     public void testListContactListsWithOptionalParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listContactLists");
@@ -394,7 +411,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for listContactLists method.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listContactLists} integration test with negative case.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {listContactLists} integration test with negative case.")
     public void testListContactListsWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listContactLists");
@@ -417,7 +435,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for listContactsInaList method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactWithMandatoryParameters"}, description = "ConstantContact {listContactsInaList} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateContactWithMandatoryParameters"},
+            description = "ConstantContact {listContactsInaList} integration test with mandatory parameters.")
     public void testListContactsInaListsWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listContactsInaList");
@@ -441,7 +460,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for listContactsInaList method with optional parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testListContactsInaListsWithMandatoryParameters"}, description = "ConstantContact {listContactsInaList} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testListContactsInaListsWithMandatoryParameters"},
+            description = "ConstantContact {listContactsInaList} integration test with mandatory parameters.")
     public void testListContactsInaListsWithOptionalParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listContactsInaList");
@@ -470,7 +490,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for listContactsInaList method.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listContactsInaList} integration test with negative case.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {listContactsInaList} integration test with negative case.")
     public void testListContactsInaListWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listContactsInaList");
@@ -493,7 +514,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for createSchedule method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateCampaignWithOptionalParameters"}, description = "ConstantContact {createSchedule} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateCampaignWithOptionalParameters"},
+            description = "ConstantContact {createSchedule} integration test with mandatory parameters.")
     public void testCreateScheduleWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:createSchedule");
@@ -519,7 +541,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for createSchedule method.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateScheduleWithMandatoryParameters"}, description = "ConstantContact {createSchedule} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateScheduleWithMandatoryParameters"},
+            description = "ConstantContact {createSchedule} integration test with mandatory parameters.")
     public void testCreateScheduleWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:createSchedule");
@@ -545,7 +568,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for getSchedule method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateScheduleWithNegativeCase"}, description = "ConstantContact {getSchedule} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateScheduleWithNegativeCase"},
+            description = "ConstantContact {getSchedule} integration test with mandatory parameters.")
     public void testGetScheduleWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getSchedule");
@@ -595,7 +619,9 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for listCampaignClicks method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listCampaignClicks} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateCampaignWithMandatoryParameters",
+            "testCreateCampaignWithOptionalParameters"},
+            description = "ConstantContact {listCampaignClicks} integration test with mandatory parameters.")
     public void testListCampaignClicksWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listCampaignClicks");
@@ -619,7 +645,9 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for listCampaignClicks method with optional parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listCampaignClicks} integration test with optional parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateCampaignWithMandatoryParameters",
+            "testCreateCampaignWithOptionalParameters"},
+            description = "ConstantContact {listCampaignClicks} integration test with optional parameters.")
     public void testListCampaignClicksWithOptionalParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listCampaignClicks");
@@ -648,7 +676,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for listCampaignClicks method.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listCampaignClicks} integration test with negative case.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {listCampaignClicks} integration test with negative case.")
     public void testListCampaignClicksWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listCampaignClicks");
@@ -677,7 +706,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for listCampaignOpeners method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listCampaignOpeners} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {listCampaignOpeners} integration test with mandatory parameters.")
     public void testListCampaignOpenersWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listCampaignOpeners");
@@ -702,8 +732,10 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for listCampaignOpeners method with optional parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listCampaignOpeners} integration test with optional parameters.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {listCampaignOpeners} integration test with optional parameters.")
     public void testListCampaignOpenersWithOptionalParameters() throws IOException, JSONException {
+
 
         esbRequestHeadersMap.put("Action", "urn:listCampaignOpeners");
 
@@ -731,7 +763,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for listCampaignOpeners method.
      */
-    @Test(groups = {"wso2.esb"}, description = "ConstantContact {listCampaignOpeners} integration test with negative case.")
+    @Test(groups = {"wso2.esb"},
+            description = "ConstantContact {listCampaignOpeners} integration test with negative case.")
     public void testListCampaignOpenersWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listCampaignOpeners");
@@ -760,7 +793,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for updateContact method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testListContactsInaListsWithOptionalParameters"}, description = "ConstantContact {updateContact} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testListContactsInaListsWithOptionalParameters"},
+            description = "ConstantContact {updateContact} integration test with mandatory parameters.")
     public void testUpdateContactWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:updateContact");
@@ -786,7 +820,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for updateContact method with optional parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testUpdateContactWithMandatoryParameters"}, description = "ConstantContact {updateContact} integration test with Optional parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testUpdateContactWithMandatoryParameters"},
+            description = "ConstantContact {updateContact} integration test with Optional parameters.")
     public void testUpdateContactWithOPtionalParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:updateContact");
@@ -809,7 +844,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Negative test case for updateContact method.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testUpdateContactWithMandatoryParameters"}, description = "ConstantContact {updateContact} integration test with negative case.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testUpdateContactWithMandatoryParameters"},
+            description = "ConstantContact {updateContact} integration test with negative case.")
     public void testUpdateContactWithNegativeCase() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:updateContact");
@@ -836,7 +872,8 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
     /**
      * Positive test case for getCampaignById method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateCampaignWithMandatoryParameters"}, description = "Constantcontact {getCampaignById} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"}, dependsOnMethods = {"testCreateCampaignWithMandatoryParameters"},
+            description = "Constantcontact {getCampaignById} integration test with mandatory parameters.")
     public void testGetCampaignByIdWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getCampaignById");
@@ -844,12 +881,16 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getCampaignById_mandatory.json");
 
-        String apiEndPoint = apiRequestUrl + "/emailmarketing/campaigns/" + connectorProperties.getProperty("campaignId") + apiKey;
+        String apiEndPoint = apiRequestUrl + "/emailmarketing/campaigns/"
+                + connectorProperties.getProperty("campaignId") + apiKey;
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
 
-        Assert.assertEquals(esbRestResponse.getBody().getString("subject"), apiRestResponse.getBody().getString("subject"));
-        Assert.assertEquals(esbRestResponse.getBody().getString("name"), apiRestResponse.getBody().getString("name"));
-        Assert.assertEquals(esbRestResponse.getBody().getString("text_content"), apiRestResponse.getBody().getString("text_content"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("subject"),
+                apiRestResponse.getBody().getString("subject"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("name"),
+                apiRestResponse.getBody().getString("name"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("text_content"),
+                apiRestResponse.getBody().getString("text_content"));
     }
 
     /**
@@ -870,13 +911,15 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-        Assert.assertEquals(esbArray.getJSONObject(0).getString("error_message"), apiArray.getJSONObject(0).getString("error_message"));
+        Assert.assertEquals(esbArray.getJSONObject(0).getString("error_message"),
+                apiArray.getJSONObject(0).getString("error_message"));
     }
 
     /**
      * Positive test case for listCampaigns method with mandatory parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "Constantcontact {listCampaigns} integration test with mandatory parameters.")
+    @Test(groups = {"wso2.esb"},
+            description = "Constantcontact {listCampaigns} integration test with mandatory parameters.")
     public void testListCampaignsWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:listCampaigns");
@@ -889,32 +932,42 @@ public class ConstantcontactConnectorIntegrationTest extends ConnectorIntegratio
         JSONArray esbResultArray = new JSONArray(esbRestResponse.getBody().getString("results"));
         JSONArray apiResultArray = new JSONArray(apiRestResponse.getBody().getString("results"));
 
-        Assert.assertEquals(esbResultArray.getJSONObject(0).getString("id"), apiResultArray.getJSONObject(0).getString("id"));
-        Assert.assertEquals(esbResultArray.getJSONObject(0).getString("modified_date"), apiResultArray.getJSONObject(0).getString("modified_date"));
-        Assert.assertEquals(esbResultArray.getJSONObject(1).getString("id"), apiResultArray.getJSONObject(1).getString("id"));
-        Assert.assertEquals(esbResultArray.getJSONObject(1).getString("modified_date"), apiResultArray.getJSONObject(1).getString("modified_date"));
+        Assert.assertEquals(esbResultArray.getJSONObject(0).getString("id"),
+                apiResultArray.getJSONObject(0).getString("id"));
+        Assert.assertEquals(esbResultArray.getJSONObject(0).getString("modified_date"),
+                apiResultArray.getJSONObject(0).getString("modified_date"));
+        Assert.assertEquals(esbResultArray.getJSONObject(1).getString("id"),
+                apiResultArray.getJSONObject(1).getString("id"));
+        Assert.assertEquals(esbResultArray.getJSONObject(1).getString("modified_date"),
+                apiResultArray.getJSONObject(1).getString("modified_date"));
     }
 
     /**
      * Positive test case for listCampaigns method with optional parameters.
      */
-    @Test(groups = {"wso2.esb"}, description = "Constantcontact {listCampaigns} integration test with optional parameters.")
+    @Test(groups = {"wso2.esb"},
+            description = "Constantcontact {listCampaigns} integration test with optional parameters.")
     public void testListCampaignsWithOptionalParameters() throws IOException, JSONException, InterruptedException {
 
         esbRequestHeadersMap.put("Action", "urn:listCampaigns");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listCampaigns_optional.json");
 
-        String apiEndPoint = apiRequestUrl + "/emailmarketing/campaigns" + apiKey + "&limit=" + connectorProperties.getProperty("limit");
+        String apiEndPoint = apiRequestUrl + "/emailmarketing/campaigns" + apiKey + "&limit="
+                + connectorProperties.getProperty("limit");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         JSONArray esbResultArray = new JSONArray(esbRestResponse.getBody().getString("results"));
         JSONArray apiResultArray = new JSONArray(apiRestResponse.getBody().getString("results"));
         int limit = Integer.parseInt(connectorProperties.getProperty("limit"));
 
         Assert.assertEquals(limit, esbResultArray.length());
-        Assert.assertEquals(esbResultArray.getJSONObject(0).getString("id"), apiResultArray.getJSONObject(0).getString("id"));
-        Assert.assertEquals(esbResultArray.getJSONObject(0).getString("modified_date"), apiResultArray.getJSONObject(0).getString("modified_date"));
-        Assert.assertEquals(esbResultArray.getJSONObject(1).getString("id"), apiResultArray.getJSONObject(1).getString("id"));
-        Assert.assertEquals(esbResultArray.getJSONObject(1).getString("modified_date"), apiResultArray.getJSONObject(1).getString("modified_date"));
+        Assert.assertEquals(esbResultArray.getJSONObject(0).getString("id"),
+                apiResultArray.getJSONObject(0).getString("id"));
+        Assert.assertEquals(esbResultArray.getJSONObject(0).getString("modified_date"),
+                apiResultArray.getJSONObject(0).getString("modified_date"));
+        Assert.assertEquals(esbResultArray.getJSONObject(1).getString("id"),
+                apiResultArray.getJSONObject(1).getString("id"));
+        Assert.assertEquals(esbResultArray.getJSONObject(1).getString("modified_date"),
+                apiResultArray.getJSONObject(1).getString("modified_date"));
     }
 }

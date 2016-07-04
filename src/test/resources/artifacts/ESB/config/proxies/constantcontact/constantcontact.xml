@@ -73,8 +73,7 @@
             <property name="fromName" expression="json-eval($.fromName)"/>
             <property name="greetingString" expression="json-eval($.greetingString)"/>
             <property name="replyToEmail" expression="json-eval($.replyToEmail)"/>
-            <property name="isViewAsWebpageEnabled"
-                      expression="json-eval($.isViewAsWebpageEnabled)"/>
+            <property name="isViewAsWebpageEnabled" expression="json-eval($.isViewAsWebpageEnabled)"/>
             <property name="updateSummary" expression="json-eval($.updateSummary)"/>
             <constantcontact.init>
                 <apiToken>{$ctx:apiToken}</apiToken>
@@ -184,12 +183,10 @@
                         <subject>{$ctx:subject}</subject>
                         <emailContentFormat>{$ctx:emailContentFormat}</emailContentFormat>
                         <styleSheet>{$ctx:styleSheet}</styleSheet>
-                        <permissionReminderText>{$ctx:permissionReminderText}
-                        </permissionReminderText>
+                        <permissionReminderText>{$ctx:permissionReminderText}</permissionReminderText>
                         <greetingSalutations>{$ctx:greetingSalutations}</greetingSalutations>
                         <messageFooter>{$ctx:messageFooter}</messageFooter>
-                        <isPermissionReminderEnabled>{$ctx:isPermissionReminderEnabled}
-                        </isPermissionReminderEnabled>
+                        <isPermissionReminderEnabled>{$ctx:isPermissionReminderEnabled}</isPermissionReminderEnabled>
                         <emailContent>{$ctx:emailContent}</emailContent>
                         <name>{$ctx:name}</name>
                         <viewAsWebPageText>{$ctx:viewAsWebPageText}</viewAsWebPageText>
@@ -198,8 +195,7 @@
                         <fromName>{$ctx:fromName}</fromName>
                         <greetingString>{$ctx:greetingString}</greetingString>
                         <replyToEmail>{$ctx:replyToEmail}</replyToEmail>
-                        <isViewAsWebpageEnabled>{$ctx:isViewAsWebpageEnabled}
-                        </isViewAsWebpageEnabled>
+                        <isViewAsWebpageEnabled>{$ctx:isViewAsWebpageEnabled}</isViewAsWebpageEnabled>
                     </constantcontact.createCampaign>
                 </case>
                 <case regex="urn:getCampaignById">
