@@ -1,0 +1,21 @@
+{
+    "name": "ConstantContact",
+    "owner": "WSO2",
+    "category": "Sales and Marketing",
+    "documentationUrl": "https://docs.wso2.com/display/ESBCONNECTORS/Constant+Contact+Connector",
+    "description": "The Constant Contact connector allows you to access the Constant Contact REST API through the WSO2 ESB. Constant Contact allows you to create marketing campaigns through e-mail.",
+    "status": "Unsupported",
+    "labels": [
+        "connector"
+    ],
+    "releases": [
+        {
+            "tagName": "v1.0.1",
+            "products": [
+                "ESB 5.0.0",
+                "ESB 4.9.0"
+            ],
+            "isHidden": false
+        }
+    ]
+}
